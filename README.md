@@ -23,15 +23,15 @@ C) Multiple clients can join and all will sync correctly.
 
 **Gameplay:**
 
-A) FPS Controls on Editor & Standalone builds (WASD/Arrows + Mouse). On-Screen joystick + Fire button on Android mobile build. Each player character is Owner Predicted.
+A) FPS Controls on Editor & Standalone builds (WASD/Arrows + Mouse). On-Screen joystick + Fire button on Android mobile build. Each player character is **Owner Predicted**.
 
 B) Player's names will be shown on top of their characters as billboards (always face camera).
 
-C) Players can shoot projectiles which despawn on player hit, below ground or timeout. These projectiles follow Predicted projectile path using custom gravity physics.
+C) Players can shoot projectiles which despawn on player hit, below ground or timeout. These projectiles follow **Predicted** projectile path using custom gravity physics.
 
 D) The projectiles use logic based server authoritative hit detection. Logic was used instead of actual physics to optimize for performance as Unity's Raycast checks are expensive (maybe fine for 100s of game objects but not for 1000s)
 
-E) 100 target boxes move randomly (using random walker logic) - initially green, then changing color on each subsequent hit to first yellow then red and then despawn. Colors are changed using URPMaterialPropertyBaseColor component which is processed in parallel by the ECS framework. It uses GPU instancing to send a buffer of per-instance data to the shader which then applies the unique color to each instance of the mesh during the single, batched draw call.
+E) 100 target boxes move randomly (using random walker logic) and synced using **Interpolation** - initially green, then changing color on each subsequent hit to first yellow then red and then despawn. Colors are changed using URPMaterialPropertyBaseColor component which is processed in parallel by the ECS framework. It uses GPU instancing to send a buffer of per-instance data to the shader which then applies the unique color to each instance of the mesh during the single, batched draw call.
 
 F) Each player has 3 HP, die on 0, and respawn after 5s upon death at random point.
 
